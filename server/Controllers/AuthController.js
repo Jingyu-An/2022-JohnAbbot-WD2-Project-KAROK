@@ -5,9 +5,12 @@ import bcrypt from 'bcrypt'
 export const registerUser = async (req, res) => {
     const { username, password, firstname, lastname } = req.body;
 
-    const newUser = new UserModel({
+    const salt = await bcrypt.genSalt(10); //After setting the number of non-crypt digits, create a salt and execute it using genSalt.
+    const hashedPass = await bcrypt.hash(password, salt);
+
+        const newUser = new UserModel({
         username,
-        password,
+        password : hashedPass,
         firstname,
         lastname,
     });
@@ -19,3 +22,23 @@ export const registerUser = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+
+export const loginUser = async (req, res) => {
+    const {username, password} = req.body
+
+    try {
+        const user = await UserModel.findOne({username: username})
+        if(user)
+        {
+            const plainPassword = user.password;
+            const validity = await bcrypt.compare(password, plainPassword);
+            validity? res.status(200).json(user): res.status(400).json("Wrong Password")
+        }
+        else{
+            res.status(404).json("User does not exists")
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
