@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import express from "express";
 import AuthRoute from './Routes/AuthRoute.js'
+import UserRoute from "./Routes/UserRoute.js";
 
 dotenv.config();
 
@@ -33,3 +34,4 @@ mongoose
 
 // usage of routes
 app.use('/auth', AuthRoute)
+app.use('/user',UserRoute)
