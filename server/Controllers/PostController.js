@@ -1,5 +1,6 @@
 import PostModel from "../Models/postModel.js";
 import mongoose from "mongoose";
+import UserModel from "../Models/userModel.js";
 
 
 // Create
@@ -31,7 +32,7 @@ export const getPost = async (req, res) => {
 // Update
 export const updatePost = async (req, res) => {
   const id = req.params.id;
-  const { userId } = req.body;
+  const {userId} = req.body;
   
   try {
     const post = await PostModel.findById(id);
@@ -53,7 +54,7 @@ export const updatePost = async (req, res) => {
 // Delete
 export const deletePost = async (req, res) => {
   const id = req.params.id;
-  const { userId } = req.body;
+  const {userId} = req.body;
   
   try {
     const post = await PostModel.findById(id);
@@ -74,7 +75,7 @@ export const deletePost = async (req, res) => {
 // Like/Dislike
 export const likePost = async (req, res) => {
   const id = req.params.id;
-  const { userId } = req.body;
+  const {userId} = req.body;
   
   try {
     const post = await PostModel.findById(id);
@@ -89,6 +90,45 @@ export const likePost = async (req, res) => {
       });
       res.status(200).json("Post unliked");
     }
+    
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+
+// Get Timeline Post
+export const getTimelinePosts = async (req, res) => {
+  const id = req.params.id;
+  
+  try {
+    const currentUserPosts = await PostModel.find({userId: id});
+    const followingPosts = await UserModel.aggregate([
+      {
+        $match: {
+          _id: new mongoose.Types.ObjectId(id),
+        }
+      },
+      {
+        $lookup: {
+          from        : "posts",
+          localField  : "following",
+          foreignField: "userId",
+          as          : "followingPosts"
+        }
+      },
+      {
+        $project: {
+          followingPosts: 1,
+          _id           : 0
+        }
+      }
+    ]);
+    
+    res.status(200)
+    .json(currentUserPosts.concat(...followingPosts[0].followingPosts))
+    .sort((a, b) => {
+      return b.createdAt - a.createdAt;
+    });
     
   } catch (err) {
     res.status(500).json(err);
