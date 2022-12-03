@@ -6,7 +6,7 @@ import express from "express";
 import AuthRoute from './Routes/AuthRoute.js'
 import UserRoute from "./Routes/UserRoute.js";
 import PostRoute from "./Routes/PostRoute.js";
-
+import cors from "cors"
 dotenv.config();
 
 
@@ -19,7 +19,7 @@ app.use(express.json()); // Allows express to read a request body
 // Configuring body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
+app.use(cors())
 mongoose
     .connect(process.env.MONGO_DB, {
         useNewUrlParser: true,
