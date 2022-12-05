@@ -21,10 +21,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors())
 mongoose
-    .connect(process.env.MONGO_DB, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
+    .connect(process.env.MONGO_DB)
     .then(() =>
         app.listen(process.env.PORT, () =>
             console.log(`Listening at ${process.env.PORT}`)
