@@ -8,5 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="MERN-SocialMedia-ZAINKEEPSCODE" />
+    <orderEntry type="module" module-name="SocialMedia-Frontend" />
   </component>
 </module>

@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/KAROK_Project.iml" filepath="$PROJECT_DIR$/.idea/KAROK_Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../MERN-SocialMedia-ZAINKEEPSCODE/.idea/MERN-SocialMedia-ZAINKEEPSCODE.iml" filepath="$PROJECT_DIR$/../MERN-SocialMedia-ZAINKEEPSCODE/.idea/MERN-SocialMedia-ZAINKEEPSCODE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../SocialMedia-Frontend/.idea/SocialMedia-Frontend.iml" filepath="$PROJECT_DIR$/../SocialMedia-Frontend/.idea/SocialMedia-Frontend.iml" />
     </modules>
   </component>
 </project>
