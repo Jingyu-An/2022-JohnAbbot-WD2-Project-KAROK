@@ -13,6 +13,9 @@ dotenv.config();
 // Routes
 const app = express();
 
+// image for public
+app.use(express.static('public'));
+app.use('/images', express.static('images'));
 
 // Middleware
 app.use(express.json()); // Allows express to read a request body

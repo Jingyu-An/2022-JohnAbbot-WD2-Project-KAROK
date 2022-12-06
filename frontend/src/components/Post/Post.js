@@ -5,8 +5,11 @@ import Comment from '../../img/comment.png';
 import Heart from '../../img/like.png';
 import NotLike from '../../img/notlike.png';
 import Comments from "../Comment/Comments";
+import {useSelector} from "react-redux";
 
 const Post = ({data}) => {
+  
+  const {user} = useSelector((state) => state.authReducer.authData);
   
   const [enableComment, setEnableComment] = useState(false);
   
@@ -20,7 +23,11 @@ const Post = ({data}) => {
   
   return (
     <div className='Post'>
-      <img src={data.img} alt=""/>
+      <img
+        src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image
+          : ''}
+        alt=""
+      />
       <div className='postReact'>
         <img
           src={data.liked ? Heart : NotLike}
