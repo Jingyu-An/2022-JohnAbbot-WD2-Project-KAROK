@@ -6,7 +6,7 @@ const FollowersCard = () => {
   return (
     <div className="FollowersCard">
         <h3>Who is following you</h3>
-        <hr/>
+       
 
         {Followers.map((follower, id)=>{
             return(
