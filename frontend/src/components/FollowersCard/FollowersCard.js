@@ -30,4 +30,3 @@ const FollowersCard = () => {
 
 export default FollowersCard
 
-export default FollowersCard;
