@@ -15,14 +15,14 @@ export const addCommentPost = async (req, res) => {
         }
       }
     });
-    res.status(200).json("Comment added");
+    res.status(200).json("Comments added");
     
   } catch (err) {
     res.status(500).json(err);
   }
 }
 
-// Delete Comment
+// Delete Comments
 export const deleteCommentPost = async (req, res) => {
   const postId = req.params.id;
   const comId = req.params.comId;
@@ -38,7 +38,7 @@ export const deleteCommentPost = async (req, res) => {
         }
       }
     });
-    res.status(200).json("Comment deleted");
+    res.status(200).json("Comments deleted");
     
   } catch (err) {
     res.status(500).json(err);
