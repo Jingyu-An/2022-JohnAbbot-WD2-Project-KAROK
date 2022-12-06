@@ -2,13 +2,15 @@ import "./App.css"
 import Navbar from './components/Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.css';
 import Home from "./pages/home/Home";
-import Contact from './pages/Contact/Contact';
 
 import Profile from "./pages/profile/Profile";
 import Auth from "./pages/auth/Auth";
 import {Route, Routes} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 function App() {
+  const user = useSelector((state) => state.authReducer.authData)
+
   return (
     <div>
       <Navbar/>
@@ -16,10 +18,10 @@ function App() {
         <div className="blur" style={{top: '-18%', right: '0'}}></div>
         <div className="blur" style={{top: '36%', left: '-8rem'}}></div>
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/auth" element={<Auth/>}/>
-          <Route path="/contact" element={<Contact/>}/>
+          <Route path="/" element={user ? <Home/> : <Auth/>}/>
+          {/*<Route path="/auth" element={<Auth/>}/>*/}
         </Routes>
+
       </div>
       {/*<Profile/>*/}
     </div>
