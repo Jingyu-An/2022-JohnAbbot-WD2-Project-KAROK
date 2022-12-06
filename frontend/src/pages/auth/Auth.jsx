@@ -15,6 +15,7 @@ const Auth = () => {
       </div>
       
       <LogIn/>
+      {/* <SignUp/> */}
     </div>
   )
 }
