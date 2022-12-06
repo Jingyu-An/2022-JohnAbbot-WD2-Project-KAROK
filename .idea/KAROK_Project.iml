@@ -10,5 +10,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="MERN-SocialMedia-ZAINKEEPSCODE" />
     <orderEntry type="module" module-name="SocialMedia-Frontend" />
+    <orderEntry type="module" module-name="Day06" />
+    <orderEntry type="module" module-name="Day04" />
   </component>
 </module>

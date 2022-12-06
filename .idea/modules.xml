@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../JohnAbbott/WebDevelopment2/Task/Day04/.idea/Day04.iml" filepath="$PROJECT_DIR$/../../JohnAbbott/WebDevelopment2/Task/Day04/.idea/Day04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../JohnAbbott/WebDevelopment2/Task/Day06/.idea/Day06.iml" filepath="$PROJECT_DIR$/../../JohnAbbott/WebDevelopment2/Task/Day06/.idea/Day06.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/KAROK_Project.iml" filepath="$PROJECT_DIR$/.idea/KAROK_Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/../MERN-SocialMedia-ZAINKEEPSCODE/.idea/MERN-SocialMedia-ZAINKEEPSCODE.iml" filepath="$PROJECT_DIR$/../MERN-SocialMedia-ZAINKEEPSCODE/.idea/MERN-SocialMedia-ZAINKEEPSCODE.iml" />
       <module fileurl="file://$PROJECT_DIR$/../SocialMedia-Frontend/.idea/SocialMedia-Frontend.iml" filepath="$PROJECT_DIR$/../SocialMedia-Frontend/.idea/SocialMedia-Frontend.iml" />
