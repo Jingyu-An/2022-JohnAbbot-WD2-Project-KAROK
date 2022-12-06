@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoSearch from '../logoSearch/LogoSearch';
+import LogoSearch from '../LogoSearch/LogoSearch';
 import ProfileCard from '../profileCard/ProfileCard';
 import './ProfileSide.css'
 

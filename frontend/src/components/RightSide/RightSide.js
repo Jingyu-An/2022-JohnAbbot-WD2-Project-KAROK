@@ -1,6 +1,6 @@
 import React from 'react';
 import './RightSide.css';
-import FollowersCard from '../followersCard/FollowersCard';
+import FollowersCard from '../FollowersCard/FollowersCard';
 
 //import TrendCard from '../trendCard/TrendCard';
 
