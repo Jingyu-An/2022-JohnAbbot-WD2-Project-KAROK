@@ -8,4 +8,7 @@ export const Followers = [
   { name: "Hulk Buster", username: "HulkBuster", img: img2 },
   { name: "Thor", username: "ThunderMaster", img: img3 },
   { name: "Natasha", username: "Natasha", img: img4 },
+  { name: "Mulkan Jodhe", username: "Mulkanter", img: img2 },
+  { name: "Thora", username: "ThunMaster", img: img3 },
+  { name: "Natasha", username: "Natashaked", img: img4 },
 ];
