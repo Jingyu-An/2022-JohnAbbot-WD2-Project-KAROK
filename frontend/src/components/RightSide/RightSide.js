@@ -1,5 +1,6 @@
 import React from 'react';
 import './RightSide.css';
+import FollowersCard from '../followersCard/FollowersCard';
 
 //import TrendCard from '../trendCard/TrendCard';
 
@@ -7,7 +8,7 @@ import './RightSide.css';
 const RightSide = () => {
   return (
    <div className="RightSide">
-     RightSide
+     <FollowersCard/>
    </div>
   )
 }

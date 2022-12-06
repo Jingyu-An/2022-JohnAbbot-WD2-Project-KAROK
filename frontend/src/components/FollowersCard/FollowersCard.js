@@ -1,7 +1,7 @@
 import React from 'react'
 import './FollowersCard.css'
 
-import { Followers } from '../../Data/FollowersData'
+import { Followers } from '../../Data/FollowersData';
 const FollowersCard = () => {
   return (
     <div className="FollowersCard">
@@ -28,5 +28,5 @@ const FollowersCard = () => {
   )
 }
 
-export default FollowersCard
+export default FollowersCard;
 
