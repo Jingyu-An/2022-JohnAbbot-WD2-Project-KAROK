@@ -1,10 +1,15 @@
 .FollowersCard{
     width: 100%;
-    border-radius: 0.7rem;
+    border-radius: 1.5rem;
     gap: 1rem;
     display: flex;
     flex-direction: column;
     font-size: 13px;
+    background: var(--cardColor);
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    padding-top:10px;
+    
 }
 
 .follower{
@@ -23,6 +28,7 @@
     width: 3.2rem;
     height: 3.2rem;
     border-radius: 50%;
+    margin: 5px;
 }
 
 .name{
@@ -41,4 +47,5 @@
     height: 2rem;
     padding-left: 20px;
     padding-right: 20px;
+    margin-right: 12px;
 }
