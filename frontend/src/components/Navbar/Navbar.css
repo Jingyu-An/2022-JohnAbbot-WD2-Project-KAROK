@@ -1,0 +1,7 @@
+.logout{
+    margin-left: 25rem;
+    background: var(--buttonBg);
+    float: right;
+    border: none;
+    outline: none;
+}

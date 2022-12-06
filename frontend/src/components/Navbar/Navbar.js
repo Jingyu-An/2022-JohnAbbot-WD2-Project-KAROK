@@ -1,10 +1,11 @@
-//import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 //import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {useDispatch} from "react-redux";
 import {logout} from "../../Actions/AuthActions";
+import './Navbar.css';
 
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 
@@ -19,6 +20,7 @@ function Navigate() {
 
 
   return (
+    
     <Navbar bg="light" expand="lg">
       <Container fluid>
 
@@ -32,14 +34,14 @@ function Navigate() {
           >
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="#action2">About Karokify</Nav.Link>
-            <Nav.Link href="#action2">Login</Nav.Link>
-            <Nav.Link href="#action2">Support</Nav.Link>
+            <Nav.Link href="/contact">Support</Nav.Link>
             {/*Temporary logout button*/}
-            <button style={{cursor: "pointer"}} onClick={handleLogOut}>Log Out</button>
+            <Button className ="logout" style={{cursor: "pointer"}} onClick={handleLogOut}>Log Out</Button>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    
   );
 }
 
