@@ -33,7 +33,7 @@ function Navigate() {
             navbarScroll
           >
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="#action2">About Karokify</Nav.Link>
+            <Nav.Link href="/about">About Karokify</Nav.Link>
             <Nav.Link href="/contact">Support</Nav.Link>
             {/*Temporary logout button*/}
             <Button className ="logout" style={{cursor: "pointer"}} onClick={handleLogOut}>Log Out</Button>
