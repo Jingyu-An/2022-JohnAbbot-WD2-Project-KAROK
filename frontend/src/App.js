@@ -2,6 +2,7 @@ import "./App.css"
 import Navbar from './components/Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.css';
 import Home from "./pages/home/Home";
+import Contact from './pages/Contact/Contact';
 
 import Profile from "./pages/profile/Profile";
 import Auth from "./pages/auth/Auth";
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/auth" element={<Auth/>}/>
+          <Route path="/contact" element={<Contact/>}/>
         </Routes>
       </div>
       {/*<Profile/>*/}

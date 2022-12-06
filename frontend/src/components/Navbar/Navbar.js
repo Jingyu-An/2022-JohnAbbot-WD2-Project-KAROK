@@ -21,7 +21,7 @@ function Navigate() {
             <Nav.Link href="#action1">Home</Nav.Link>
             <Nav.Link href="#action2">About Karokify</Nav.Link>
             <Nav.Link href="#action2">Login</Nav.Link>
-            <Nav.Link href="#action2">Support</Nav.Link>
+            <Nav.Link href="/contact">Support</Nav.Link>
             
             
           </Nav>
