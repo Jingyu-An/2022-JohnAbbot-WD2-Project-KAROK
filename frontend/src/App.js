@@ -18,20 +18,17 @@ function App() {
       <div className="App">
         <div className="blur" style={{top: '0', right: '0'}}></div>
         <div className="blur" style={{top: '36%', left: '-8rem'}}></div>
-         {/* <Routes>
-          <Route path="/" element={user ? <Home/> : <Auth/>}/> */}
-          {/*<Route path="/auth" element={<Auth/>}/>*/}
-<<<<<<< HEAD
-          {/* <Route path="/contact" element={<Contact />} />
-        </Routes>  */}
-=======
+          <Routes>
+          <Route path="/" element={user ? <Home/> : <Auth/>}/>
+          <Route path="/auth" element={<Auth/>}/>
+
           <Route path="/contact" element={user ? <Contact /> : <Auth/>} />
           <Route path="/about" element={user ? <About /> : <Auth/>} />
         </Routes>
->>>>>>> 65c8f3edebdb1dac768feb86c95634732fa1959b
+
 
       </div>
-      <Profile/>
+
     </div>
   );
 }
