@@ -1,3 +1,7 @@
+/*
+* aixos Library
+* Asynchronous HTTP communication library using promise API
+* */
 import axios from "axios";
 
 const API = axios.create({baseURL : 'http://localhost:5002'});
