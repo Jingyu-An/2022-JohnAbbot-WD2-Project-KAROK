@@ -13,7 +13,7 @@ dotenv.config();
 // Routes
 const app = express();
 
-// image for public
+// images for public
 app.use(express.static('public'));
 app.use('/images', express.static('images'));
 

@@ -18,6 +18,22 @@ export const getUser  = async (req, res)=>{
     }
 }
 
+// Get all users
+export const getAllUsers = async (req, res) => {
+    console.log("getAllUsers")
+    try {
+        let users = await UserModel.find();
+        users = users.map((user)=>{
+            const {password, ...otherDetails} = user._doc
+            return otherDetails
+        })
+        console.log(users)
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+};
+
 // update a user
 export const updateUser = async (req, res) => {
     const id = req.params.id;
