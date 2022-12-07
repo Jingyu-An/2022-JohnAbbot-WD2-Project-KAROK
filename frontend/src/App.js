@@ -16,13 +16,13 @@ function App() {
     <div>
       <Navbar/>
       <div className="App">
-        <div className="blur" style={{top: '-18%', right: '0'}}></div>
+        <div className="blur" style={{top: '0', right: '0'}}></div>
         <div className="blur" style={{top: '36%', left: '-8rem'}}></div>
         <Routes>
           <Route path="/" element={user ? <Home/> : <Auth/>}/>
           {/*<Route path="/auth" element={<Auth/>}/>*/}
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={user ? <Contact /> : <Auth/>} />
+          <Route path="/about" element={user ? <About /> : <Auth/>} />
         </Routes>
 
       </div>
