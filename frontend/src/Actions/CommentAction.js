@@ -1,10 +1,10 @@
 import * as PostApi from '../API/PostRequest'
 
-export const commentPost = (id, userId, comment) => async (dispatch) => {
+export const commentPost = (id, username, userId, comment, commentId) => async (dispatch) => {
   dispatch({type: "COMMENT_START"})
   
   try {
-    const { data } = await PostApi.commentPost(id, userId, comment);
+    const { data } = await PostApi.commentPost(id, username, userId, comment, commentId);
     dispatch({ type: "COMMENT_SUCCESS", data: data})
   } catch (e) {
     console.log(e);

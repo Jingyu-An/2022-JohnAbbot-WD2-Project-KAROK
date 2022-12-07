@@ -12,9 +12,11 @@ export const likePost = (id, userId)=> API.put(`/posts/${id}/like`, {
 })
 
 // Comment
-export const commentPost = (id, userId, comment)=> API.put(`/posts/${id}/comment`, {
+export const commentPost = (id, username, userId, comment, commentId)=> API.put(`/posts/${id}/comment`, {
+  username: username,
   userId: userId,
   comments: comment,
+  commentId: commentId,
 })
 
 export const getCommentsPost = (id)=> API.get(`/posts/${id}/comment`)

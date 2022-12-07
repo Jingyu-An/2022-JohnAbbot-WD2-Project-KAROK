@@ -7,7 +7,7 @@ import { UilLocationPoint } from "@iconscout/react-unicons";
 import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 
-// image uploading
+// images uploading
 import {useDispatch, useSelector} from "react-redux";
 import {uploadImage, uploadPost} from "../../Actions/uploadAction";
 
@@ -16,7 +16,7 @@ const PostShare = () => {
   const [image, setImage] = useState(null);
   const imageRef = useRef();
   
-  // image uploading
+  // images uploading
   const {user} = useSelector((state) => state.authReducer.authData)
   const desc = useRef();
   const dispatch = useDispatch();
@@ -52,8 +52,8 @@ const PostShare = () => {
         console.log(e)
       }
       
-      dispatch(uploadPost(newPost));
     }
+    dispatch(uploadPost(newPost));
     reset();
   }
   

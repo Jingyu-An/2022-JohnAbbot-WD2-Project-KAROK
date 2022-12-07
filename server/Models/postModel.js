@@ -9,7 +9,9 @@ const postSchema = mongoose.Schema({
     likes : [],
     comments : [{
       userId: String,
+      username: String,
       comment: String,
+      commentId: String
     }],
     image : String,
   },

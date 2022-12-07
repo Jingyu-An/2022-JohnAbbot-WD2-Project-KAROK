@@ -45,7 +45,7 @@ const Post = ({data}) => {
     
     e.preventDefault();
     dispatch(deleteCommentsPost(data._id, commentId, user._id));
-    setComments(comments.filter(comment => comment._id !== commentId));
+    setComments(comments.filter(comment => comment.commentId !== commentId));
   };
   
   return (
@@ -79,12 +79,13 @@ const Post = ({data}) => {
       </div>
       {comments.map((comment, id) => {
         return <div key={id} className='Comment'>
-          <div style={{flex: 1}}>{comment.comment}</div>
+          <div style={{flex: 1, fontStyle:'italic', fontWeight: 'bold'}}>{comment.username}</div>
+          <div style={{flex: 5}}>{comment.comment}</div>
           {user._id === comment.userId ?
             <div
               className='s-icon'
               onClick={(e) => {
-                deleteCommentHandler(comment._id, e)
+                deleteCommentHandler(comment.commentId, e)
               }}>
               <UilX/>
             </div>

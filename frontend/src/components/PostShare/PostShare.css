@@ -54,7 +54,7 @@
 .previewImage{
     position: relative;
 }
-/*  SVG is a vector graphics image format based on XML. SVG stands for Scalable Vector Graphics.  */
+/*  SVG is a vector graphics images format based on XML. SVG stands for Scalable Vector Graphics.  */
 .previewImage>svg{
     position: absolute;
     right: 1rem;

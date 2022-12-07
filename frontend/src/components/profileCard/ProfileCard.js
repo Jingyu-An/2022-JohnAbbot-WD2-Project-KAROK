@@ -1,36 +1,52 @@
-import React from "react";
+import React, {useState} from "react";
 import Cover from "../../img/cover2.jpg";
 import Profile from "../../img/profileImg.jpeg";
 import "./ProfileCard.css";
+import InfoCard from "../InfoCard/InfoCard";
+import {useSelector} from "react-redux";
 
 const ProfileCard = () => {
-  
-
+  const {user} = useSelector((state) => state.authReducer.authData);
+  const posts = useSelector((state) =>state.postReducer.posts);
+  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
   const ProfilePage = true;
-  
+  const [isProfileClick, setIsProfileClick] = useState(true);
+
+  console.log(user.followers.length)
+  console.log(user.following.length)
   return (
     <div className="ProfileCard">
       <div className="ProfileImages">
-        <img src={Cover} alt="" />
-        <img src={Profile} alt="" />
+        <img src={
+          user.coverPicture
+            ? serverPublic + user.coverPicture
+            : serverPublic + "../../img/cover2.jpg"
+        } alt="CoverImage" />
+        <img
+          src={
+            user.profilePicture
+              ? serverPublic + user.profilePicture
+              : serverPublic + "defaultProfile.png"
+          }
+          alt="ProfileImage"
+        />
       </div>
 
       <div className="ProfileName">
-        <span>KAROK TEAM</span>
-        <span>Software Developers</span>
+        <span>{user.firstname} {user.lastname}</span>
       </div>
 
       <div className="followStatus">
         <hr />
         <div>
           <div className="follow">
-            <span>6,890</span>
-            <span>Followings</span>
+            <span>{user.followers.length}</span>
+            <span>Followers</span>
           </div>
           <div className="vl"></div>
           <div className="follow">
-            <span>1</span>
-            <span>Followers</span>
+            <span>{user.following.length}</span>
+            <span>Following</span>
           </div>
           
 
@@ -38,7 +54,7 @@ const ProfileCard = () => {
             <>
               <div className="vl"></div>
               <div className="follow">
-                <span>3</span>
+                <span>{posts.filter((post)=>post.userId === user._id).length}</span>
                 <span>Posts</span>
               </div>
             </>
@@ -46,8 +62,13 @@ const ProfileCard = () => {
         </div>
         <hr />
       </div>
-      <span>My Profile</span>
-      {ProfilePage ? "" : <span>My Profile</span>}
+      <span onClick={()=>setIsProfileClick((prev)=>!prev)}>My Profile</span>
+      {
+        isProfileClick
+        ?<InfoCard/>
+          :''
+      }
+
     </div>
   );
 };
