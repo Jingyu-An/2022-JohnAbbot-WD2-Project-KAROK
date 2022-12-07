@@ -3,7 +3,7 @@ import React, {useRef, useState} from 'react';
 import './Comments.css'
 import {UilEnter} from "@iconscout/react-unicons";
 import {useDispatch, useSelector} from "react-redux";
-import {commentPost} from "../../Actions/postAction";
+import {commentPost} from "../../Actions/CommentAction";
 
 const Comments = (props) => {
   

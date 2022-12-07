@@ -7,8 +7,9 @@ import NotLike from '../../img/notlike.png';
 import Comments from "../Comment/Comments";
 import {useDispatch, useSelector} from "react-redux";
 import {likePost} from "../../API/PostRequest";
-import {deleteCommentsPost, getCommentsPost} from "../../Actions/postAction";
+import {deleteCommentsPost, getCommentsPost} from "../../Actions/CommentAction";
 import {UilX} from "@iconscout/react-unicons";
+import DropDownButton from "../DropDownButton/DropDownButton";
 
 const Post = ({data}) => {
   const dispatch = useDispatch();
@@ -67,7 +68,9 @@ const Post = ({data}) => {
           style={{cursor: "pointer"}}
           onClick={enableCommentHandler}
         />
-        {/*<img src = {Share} alt = ""/>*/}
+        { user._id === data.userId ?
+          <DropDownButton user={user} data={data}/> : ''
+        }
       </div>
       <span style={{color: "var(--gray)", fontSize: '12px'}}>{likes}likes</span>
       <div className='detail'>
