@@ -6,12 +6,14 @@ import InfoCard from "../InfoCard/InfoCard";
 import {useSelector} from "react-redux";
 
 const ProfileCard = () => {
-  const{user} = useSelector((state) => state.authReducer.authData);
+  const {user} = useSelector((state) => state.authReducer.authData);
   const posts = useSelector((state) =>state.postReducer.posts);
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
   const ProfilePage = true;
   const [isProfileClick, setIsProfileClick] = useState(true);
 
+  console.log(user.followers.length)
+  console.log(user.following.length)
   return (
     <div className="ProfileCard">
       <div className="ProfileImages">
@@ -38,13 +40,13 @@ const ProfileCard = () => {
         <hr />
         <div>
           <div className="follow">
-            <span>{user.following.length}</span>
-            <span>Followings</span>
+            <span>{user.followers.length}</span>
+            <span>Followers</span>
           </div>
           <div className="vl"></div>
           <div className="follow">
-            <span>{user.followers.length}</span>
-            <span>Followers</span>
+            <span>{user.following.length}</span>
+            <span>Following</span>
           </div>
           
 

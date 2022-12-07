@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {followUser, unfollowUser} from "../../Actions/UserActions";
 
-const User = ({person}) => {
+const User = ({ person }) => {
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
-  const {user} = useSelector((state) => state.authReducer.authData);
-  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.authReducer.authData);
+  const dispatch = useDispatch()
+
   const [following, setFollowing] = useState(
     person.followers.includes(user._id)
   );
@@ -17,18 +18,20 @@ const User = ({person}) => {
   };
   return (
     <div className="follower">
-      <img
-        src={
-          publicFolder + person.profilePicture
-            ? publicFolder + person.profilePicture
-            : publicFolder + "defaultProfile.png"
-        }
-        alt="profile"
-        className="followerImage"
-      />
-      <div className="name">
-        <span>{person.firstname}</span>
-        <span>@{person.username}</span>
+      <div>
+        <img
+          src={
+            publicFolder + person.profilePicture
+              ? publicFolder + person.profilePicture
+              : publicFolder + "defaultProfile.png"
+          }
+          alt="profile"
+          className="followerImage"
+        />
+        <div className="name">
+          <span>{person.firstname}</span>
+          <span>@{person.username}</span>
+        </div>
       </div>
       <button
         className={

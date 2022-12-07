@@ -20,14 +20,14 @@ export const getUser  = async (req, res)=>{
 
 // Get all users
 export const getAllUsers = async (req, res) => {
-    console.log("getAllUsers")
+
     try {
         let users = await UserModel.find();
         users = users.map((user)=>{
             const {password, ...otherDetails} = user._doc
             return otherDetails
         })
-        console.log(users)
+
         res.status(200).json(users);
     } catch (error) {
         res.status(500).json(error);
@@ -80,20 +80,20 @@ export const deleteUser = async (req, res) => {
 // Follow a User
 export const followUser = async (req, res) => {
     const id = req.params.id;
-
-    const { currentUserId } = req.body;
-
-    if (currentUserId === id) {
+    const { _id } = req.body;
+    console.log(id, _id)
+    if (_id === id) {
         res.status(403).json("Action forbidden");
     } else {
         try {
             const followUser = await UserModel.findById(id);
-            const followingUser = await UserModel.findById(currentUserId);
+            const followingUser = await UserModel.findById(_id);
 
-            if (!followUser.followers.includes(currentUserId)) {
-                await followUser.updateOne({ $push: { followers: currentUserId } });
+            if (!followUser.followers.includes(_id)) {
+                await followUser.updateOne({ $push: { followers: _id } });
                 await followingUser.updateOne({ $push: { following: id } });
                 res.status(200).json("User followed!");
+                console.log("User follow you")
             } else {
                 res.status(403).json("User is Already followed by you");
             }
@@ -106,23 +106,24 @@ export const followUser = async (req, res) => {
 
 // Follow a User
 export const unFollowUser = async (req, res) => {
+    console.log("unFollowUser")
     const id = req.params.id;
-
-    const { currentUserId } = req.body;
-
-    if (currentUserId === id) {
+    const { _id } = req.body;
+    console.log(id, _id)
+    if (_id === id) {
         res.status(403).json("Action forbidden");
     } else {
         try {
             const followUser = await UserModel.findById(id);
-            const followingUser = await UserModel.findById(currentUserId);
+            const followingUser = await UserModel.findById(_id);
 
-            if (followUser.followers.includes(currentUserId)) {
-                await followUser.updateOne({ $pull: { followers: currentUserId } });
+            if (followUser.followers.includes(_id)) {
+                await followUser.updateOne({ $pull: { followers: _id } });
                 await followingUser.updateOne({ $pull: { following: id } });
                 res.status(200).json("User not follow you!");
+                console.log("User not follow you")
             } else {
-                res.status(403).json("User is Already followed by you");
+                res.status(403).json("User is Already unFollowed");
             }
         } catch (error) {
             res.status(500).json(error);

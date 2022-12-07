@@ -43,7 +43,7 @@ const FollowersCard = () => {
       </div>
 
       {persons.map((person, id) => {
-        if(person.username.includes(search))
+        if(person.username.includes(search) && person._id !== user._id )
           return <User person={person} key={id} />;
       })}
       {/*{!location ? (*/}
