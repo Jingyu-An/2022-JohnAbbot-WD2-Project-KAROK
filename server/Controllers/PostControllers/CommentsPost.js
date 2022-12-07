@@ -1,6 +1,23 @@
 import PostModel from "../../Models/postModel.js";
 
 // Add Comments
+export const getCommentPost = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const post = await PostModel.findById(id);
+    if (post) {
+      const comments = post.comments;
+      res.status(200).json(comments);
+    } else {
+      res.status(404).json("Comments not found");
+    }
+    
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+
+// Add Comments
 export const addCommentPost = async (req, res) => {
   const id = req.params.id;
   const {userId, comments} = req.body;
@@ -27,7 +44,10 @@ export const deleteCommentPost = async (req, res) => {
   const postId = req.params.id;
   const comId = req.params.comId;
   const {userId} = req.body;
-  
+  console.log('delete comment post')
+  console.log(postId)
+  console.log(comId)
+  console.log(userId)
   try {
     const post = await PostModel.findById(postId);
     await post.updateOne({

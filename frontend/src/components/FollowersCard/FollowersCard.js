@@ -45,7 +45,7 @@ const FollowersCard = () => {
       {Followers.map((follower, id) => {
         if(follower.username.includes(search)){
         return (
-          <div className="follower">
+          <div key={id} className="follower">
             <div>
               <img src={follower.img} alt="" className='followerImage'/>
               <div className="name">

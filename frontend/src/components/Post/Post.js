@@ -1,16 +1,22 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Post.css';
 import Comment from '../../img/comment.png';
 //import Share from '../../img/share.png';
 import Heart from '../../img/like.png';
 import NotLike from '../../img/notlike.png';
 import Comments from "../Comment/Comments";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {likePost} from "../../API/PostRequest";
+import {deleteCommentsPost, getCommentsPost} from "../../Actions/postAction";
+import {UilX} from "@iconscout/react-unicons";
 
 const Post = ({data}) => {
-  
+  const dispatch = useDispatch();
   const {user} = useSelector((state) => state.authReducer.authData);
+  
+  useEffect(() => {
+    dispatch(getCommentsPost(data._id))
+  }, []);
   
   const [liked, setLiked] = useState(data.likes.includes(user.id));
   const [likes, setLikes] = useState(data.likes.length);
@@ -25,11 +31,11 @@ const Post = ({data}) => {
   const [enableComment, setEnableComment] = useState(false);
   
   const enableCommentHandler = () => {
-    if (enableComment) {
-      setEnableComment(false);
-    } else {
-      setEnableComment(true);
-    }
+    setEnableComment((prev) => !prev);
+  }
+  
+  const deleteCommentHandler = (commentId) => {
+    dispatch(deleteCommentsPost(data._id, commentId, user._id));
   }
   
   return (
@@ -59,11 +65,25 @@ const Post = ({data}) => {
         <span><b>{data.name}</b></span>
         <span> {data.desc}</span>
       </div>
+      {data.comments.map((comment, id) => {
+        return <div key={id} className='Comment'>
+          <div style={{flex: 1}}>{comment.comment}</div>
+          {user._id === comment.userId ?
+            <div
+              className='s-icon'
+              onClick={(e) => {deleteCommentHandler(comment._id)}}
+            >
+              <UilX/>
+            </div>
+            : ''}
+        </div>
+      })}
       <div>
-        {enableComment ? <Comments/> : ''}
+        {enableComment ? <Comments commentHandler={enableCommentHandler} data={data}/> : ''}
       </div>
     </div>
   )
+    ;
 }
 
 export default Post;
