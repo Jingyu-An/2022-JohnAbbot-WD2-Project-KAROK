@@ -1,21 +1,35 @@
 .team{
-    margin-top: 3rem;
-    text-align: center;
-}
+    width :50%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    /* margin-top: 3rem;
+    text-align: center;*/
+} 
 
 .about{
     display:flex;
     flex-direction: row;
-    padding-left: 13rem;
+    padding-left: 3rem;
     margin-top: 5rem;
     gap:2rem;
 }
 
 .image{
-
+   
     margin-left: 2rem;
 }
 
 .title{
+    padding-top: 10px;
 text-align: center;
+font-size: 28;
+}
+
+.cardBody{
+    position: relative;
+}
+.pageTitle{
+    text-align: center;
+    font-size: 25px; 
 }
