@@ -10,6 +10,7 @@ function ProfileModal({modalOpened , setModalOpened}) {
       overlayOpacity={0.55}
       overlayBlur={3}
       opened= {modalOpened}
+      size = "auto"
       onClose = {() => setModalOpened(false)}
     >
        <form className="infoForm">
