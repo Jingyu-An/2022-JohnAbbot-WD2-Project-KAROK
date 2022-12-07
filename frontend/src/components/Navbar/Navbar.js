@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../../Actions/AuthActions";
 import './Navbar.css';
+import LogOut from "../Logout/LogOut";
 
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 
@@ -14,12 +15,6 @@ function Navigate() {
   
   const user = useSelector((state) => state.authReducer.authData)
   const dispatch = useDispatch();
-
-  const handleLogOut = () => {
-    console.log("Log out handler")
-    dispatch(logout())
-  }
-
 
   return (
     
@@ -39,8 +34,7 @@ function Navigate() {
             <Nav.Link href="/contact">Support</Nav.Link>
           </Nav>
           { user ?
-            <Button className="logout" style={{cursor: "pointer"}} onClick={handleLogOut}>Log Out</Button>
-            : ''
+            <LogOut/>: ''
           }
         </Navbar.Collapse>
       </Container>

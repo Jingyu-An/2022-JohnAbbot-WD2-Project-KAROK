@@ -2,6 +2,7 @@ import React from "react";
 import Cover from "../../img/cover2.jpg";
 import Profile from "../../img/profileImg.jpeg";
 import "./ProfileCard.css";
+import InfoCard from "../InfoCard/InfoCard";
 
 const ProfileCard = () => {
   
@@ -48,6 +49,7 @@ const ProfileCard = () => {
       </div>
       <span>My Profile</span>
       {ProfilePage ? "" : <span>My Profile</span>}
+      <InfoCard/>
     </div>
   );
 };
