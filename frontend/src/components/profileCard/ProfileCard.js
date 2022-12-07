@@ -1,13 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import Cover from "../../img/cover2.jpg";
 import Profile from "../../img/profileImg.jpeg";
 import "./ProfileCard.css";
+import InfoCard from "../InfoCard/InfoCard";
 
 const ProfileCard = () => {
   
 
   const ProfilePage = true;
-  
+  const [isProfileClick, setIsProfileClick] = useState(true);
   return (
     <div className="ProfileCard">
       <div className="ProfileImages">
@@ -46,8 +47,13 @@ const ProfileCard = () => {
         </div>
         <hr />
       </div>
-      <span>My Profile</span>
-      {ProfilePage ? "" : <span>My Profile</span>}
+      <span onClick={()=>setIsProfileClick((prev)=>!prev)}>My Profile</span>
+      {
+        isProfileClick
+        ?<InfoCard/>
+          :''
+      }
+
     </div>
   );
 };

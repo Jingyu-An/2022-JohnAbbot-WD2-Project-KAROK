@@ -17,12 +17,14 @@ const Comments = (props) => {
     event.preventDefault();
     
     const newComment = {
+      username: user.username,
       userId: user._id,
       comment: comment.current.value,
+      commentId: Math.random().toString(16).slice(2),
     }
   
     if (comment.current.value) {
-      dispatch(commentPost(data._id, user._id, comment.current.value));
+      dispatch(commentPost(data._id, user.username, user._id, comment.current.value, newComment.commentId));
     }
     props.addCommentHandler(newComment);
     props.enableCommentHadler();

@@ -2,7 +2,8 @@ import React from 'react';
 import './InfoCard.css';
 import {UilPen} from '@iconscout/react-unicons';
 import { useState } from 'react';
-import ProfileModal  from '../ProfileModal.js';
+import ProfileModal  from '../ProfileModal/ProfileModal.js';
+import LogOut from "../Logout/LogOut";
 
 const InfoCard = () => {
 
@@ -31,7 +32,7 @@ const InfoCard = () => {
             <span><b>Works at </b></span>
             <span>Montreal Company</span>
         </div>
-        <button className='button logout-button'>Logout</button>
+      <LogOut/>
        
    </div>
   )

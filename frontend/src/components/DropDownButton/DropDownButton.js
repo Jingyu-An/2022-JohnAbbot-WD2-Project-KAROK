@@ -11,7 +11,7 @@ const DropDownButton = (props) => {
   const deletePostHandler = () => {
     if (props.user._id === props.data.userId) {
       console.log(props.data._id)
-      dispatch(deletePost(props.data._id))
+      // dispatch(deletePost(props.data._id))
     }
   }
   
