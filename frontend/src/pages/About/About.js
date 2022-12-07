@@ -18,7 +18,7 @@ const About = () => {
        
     <Card  style={{ width: '15rem' }}>
     
-    <Card.Body classNmae ="cardBody">
+    <Card.Body className ="cardBody">
     <img className='rounded image' src={image3} alt="" />
     <br/>
     
