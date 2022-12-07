@@ -2,7 +2,7 @@ import express from "express";
 import {createPost, deletePost, getPost, updatePost} from "../Controllers/PostControllers/CRUDPost.js";
 import {likePost} from "../Controllers/PostControllers/LikePost.js";
 import {getTimelinePosts} from "../Controllers/PostControllers/TimelinePost.js";
-import {addCommentPost, deleteCommentPost} from "../Controllers/PostControllers/CommentsPost.js";
+import {addCommentPost, deleteCommentPost, getCommentPost} from "../Controllers/PostControllers/CommentsPost.js";
 
 const router = express.Router();
 
@@ -16,6 +16,7 @@ router.delete('/:id', deletePost);
 router.put('/:id/like', likePost);
 
 // Comments Post
+router.get('/:id/comment', getCommentPost);
 router.put('/:id/comment', addCommentPost);
 router.put('/:id/comment/:comId/delete', deleteCommentPost);
 

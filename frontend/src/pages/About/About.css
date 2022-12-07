@@ -1,0 +1,21 @@
+.team{
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.about{
+    display:flex;
+    flex-direction: row;
+    padding-left: 13rem;
+    margin-top: 5rem;
+    gap:2rem;
+}
+
+.image{
+
+    margin-left: 2rem;
+}
+
+.title{
+text-align: center;
+}

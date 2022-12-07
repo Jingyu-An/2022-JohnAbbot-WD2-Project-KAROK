@@ -4,14 +4,14 @@ import mongoose from "mongoose";
 
 // Get Timeline Post
 export const getTimelinePosts = async (req, res) => {
-  const id = req.params.id;
+  const userId = req.params.id;
   
   try {
-    const currentUserPosts = await PostModel.find({userId: id});
+    const currentUserPosts = await PostModel.find({userId: userId});
     const followingPosts = await UserModel.aggregate([
       {
         $match: {
-          _id: new mongoose.Types.ObjectId(id),
+          _id: new mongoose.Types.ObjectId(userId),
         }
       },
       {
@@ -19,23 +19,23 @@ export const getTimelinePosts = async (req, res) => {
           from        : "posts",
           localField  : "following",
           foreignField: "userId",
-          as          : "followingPosts"
+          as          : "followingPosts",
         }
       },
       {
         $project: {
           followingPosts: 1,
-          _id           : 0
+          _id           : 0,
         }
-      }
+      },
     ]);
     
     res.status(200)
-    .json(currentUserPosts.concat(...followingPosts[0].followingPosts))
-    .sort((a, b) => {
-      return b.createdAt - a.createdAt;
-    });
-    
+    .json(currentUserPosts.concat(...followingPosts[0].followingPosts)
+      .sort((a, b) => {
+        return b.createdAt - a.createdAt;
+      })
+    );
   } catch (err) {
     res.status(500).json(err);
   }

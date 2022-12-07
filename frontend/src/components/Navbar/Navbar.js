@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 //import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../../Actions/AuthActions";
 import './Navbar.css';
 
@@ -11,6 +11,8 @@ import './Navbar.css';
 
 
 function Navigate() {
+  
+  const user = useSelector((state) => state.authReducer.authData)
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
@@ -24,7 +26,7 @@ function Navigate() {
     <Navbar bg="light" expand="lg">
       <Container fluid>
 
-        <Navbar.Brand href="#">Karokify</Navbar.Brand>
+        <Navbar.Brand href="/">Karokify</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll"/>
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -33,11 +35,13 @@ function Navigate() {
             navbarScroll
           >
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="#action2">About Karokify</Nav.Link>
+            <Nav.Link href="/about">About Karokify</Nav.Link>
             <Nav.Link href="/contact">Support</Nav.Link>
-            {/*Temporary logout button*/}
-            <Button className ="logout" style={{cursor: "pointer"}} onClick={handleLogOut}>Log Out</Button>
           </Nav>
+          { user ?
+            <Button className="logout" style={{cursor: "pointer"}} onClick={handleLogOut}>Log Out</Button>
+            : ''
+          }
         </Navbar.Collapse>
       </Container>
     </Navbar>

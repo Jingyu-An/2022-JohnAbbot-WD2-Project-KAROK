@@ -1,4 +1,3 @@
-
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -6,6 +5,7 @@ import express from "express";
 import AuthRoute from './Routes/AuthRoute.js'
 import UserRoute from "./Routes/UserRoute.js";
 import PostRoute from "./Routes/PostRoute.js";
+import UploadRoute from "./Routes/UploadRoute.js";
 import cors from "cors"
 dotenv.config();
 
@@ -13,6 +13,9 @@ dotenv.config();
 // Routes
 const app = express();
 
+// image for public
+app.use(express.static('public'));
+app.use('/images', express.static('images'));
 
 // Middleware
 app.use(express.json()); // Allows express to read a request body
@@ -33,4 +36,5 @@ mongoose
 // usage of routes
 app.use('/auth', AuthRoute)
 app.use('/user',UserRoute)
-app.use('/post', PostRoute)
+app.use('/posts', PostRoute)
+app.use('/upload', UploadRoute)
