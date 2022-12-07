@@ -21,6 +21,8 @@ const Post = ({data}) => {
   const [liked, setLiked] = useState(data.likes.includes(user.id));
   const [likes, setLikes] = useState(data.likes.length);
   
+  const [comments, setComments] = useState(data.comments)
+  
   const likeHandler = () => {
     setLiked((prev) => !prev);
     likePost(data._id, user._id);
@@ -34,9 +36,16 @@ const Post = ({data}) => {
     setEnableComment((prev) => !prev);
   }
   
-  const deleteCommentHandler = (commentId) => {
-    dispatch(deleteCommentsPost(data._id, commentId, user._id));
+  const addCommentHandler = (newComment) => {
+    setComments([...comments, newComment]);
   }
+  
+  const deleteCommentHandler = (commentId, e) => {
+    
+    e.preventDefault();
+    dispatch(deleteCommentsPost(data._id, commentId, user._id));
+    setComments(comments.filter(comment => comment._id !== commentId));
+  };
   
   return (
     <div className='Post'>
@@ -65,21 +74,28 @@ const Post = ({data}) => {
         <span><b>{data.name}</b></span>
         <span> {data.desc}</span>
       </div>
-      {data.comments.map((comment, id) => {
+      {comments.map((comment, id) => {
         return <div key={id} className='Comment'>
           <div style={{flex: 1}}>{comment.comment}</div>
           {user._id === comment.userId ?
             <div
               className='s-icon'
-              onClick={(e) => {deleteCommentHandler(comment._id)}}
-            >
+              onClick={(e) => {
+                deleteCommentHandler(comment._id, e)
+              }}>
               <UilX/>
             </div>
             : ''}
         </div>
       })}
       <div>
-        {enableComment ? <Comments commentHandler={enableCommentHandler} data={data}/> : ''}
+        {enableComment ?
+          <Comments
+            enableCommentHadler={enableCommentHandler}
+            addCommentHandler={addCommentHandler}
+            data={data}
+          />
+          : ''}
       </div>
     </div>
   )

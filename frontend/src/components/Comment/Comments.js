@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 
 import './Comments.css'
 import {UilEnter} from "@iconscout/react-unicons";
@@ -16,10 +16,17 @@ const Comments = (props) => {
   const summitHandler = (event) => {
     event.preventDefault();
     
-    console.log(data);
-    dispatch(commentPost(data._id, user._id, comment.current.value));
+    const newComment = {
+      userId: user._id,
+      comment: comment.current.value,
+    }
+  
+    if (comment.current.value) {
+      dispatch(commentPost(data._id, user._id, comment.current.value));
+    }
+    props.addCommentHandler(newComment);
+    props.enableCommentHadler();
     comment.current.value = '';
-    props.commentHandler();
   };
   
   return (
