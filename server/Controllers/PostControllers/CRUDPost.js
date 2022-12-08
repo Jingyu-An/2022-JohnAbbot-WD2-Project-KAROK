@@ -15,12 +15,14 @@ export const createPost = async (req, res) => {
     res.status(500).json(err)
   }
 }
-export const getAllPosts = async (res) =>{
-
+export const getAllPosts = async (req, res) =>{
+  try{
     const post = await PostModel.find();
     console.log('getAllPosts : ' + post)
     res.status(200).json(post);
-
+  }catch (e){
+    res.status(500).json(e)
+  }
 }
 
 
@@ -66,7 +68,7 @@ export const deletePost = async (req, res) => {
     if (post) {
       await post.deleteOne();
       isAdmin ?
-        await getAllPosts(res) :
+        await getAllPosts(req, res) :
         await getALlTimelinePosts(userId, res);
     } else {
       res.status(404).json("Post not founded");

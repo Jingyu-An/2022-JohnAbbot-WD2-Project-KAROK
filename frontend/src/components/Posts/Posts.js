@@ -24,6 +24,7 @@ const Posts = (props) => {
 
   if (allPosts !== posts || !allPosts) {
     setAllPosts(posts);
+    console.log(allPosts)
   }
 
   const deletePostHandler = (postId, event) => {
