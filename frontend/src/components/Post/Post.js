@@ -43,7 +43,7 @@ const Post = ({deletePost, data}) => {
   const deleteCommentHandler = (commentId, e) => {
     e.preventDefault();
     
-    dispatch(deleteCommentsPost(data._id, commentId, user._id));
+    dispatch(deleteCommentsPost(data.postId, commentId, user._id));
     setComments(comments.filter(comment => comment.commentId !== commentId));
   };
   

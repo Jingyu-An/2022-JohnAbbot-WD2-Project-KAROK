@@ -24,7 +24,7 @@ const Comments = (props) => {
     }
   
     if (comment.current.value) {
-      dispatch(commentPost(data._id, user.username, user._id, comment.current.value, newComment.commentId));
+      dispatch(commentPost(data.postId, user.username, user._id, comment.current.value, newComment.commentId));
     }
     props.addCommentHandler(newComment);
     props.enableCommentHadler();

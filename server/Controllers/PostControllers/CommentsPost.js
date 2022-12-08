@@ -23,7 +23,7 @@ export const addCommentPost = async (req, res) => {
   const {username, userId, comments, commentId} = req.body;
   
   try {
-    const post = await PostModel.findById(id);
+    const post = await PostModel.findOne({postId: id});
     await post.updateOne({
       $push: {
         comments: {
@@ -43,11 +43,11 @@ export const addCommentPost = async (req, res) => {
 
 // Delete Comments
 export const deleteCommentPost = async (req, res) => {
-  const postId = req.params.id;
+  const id = req.params.id;
   const comId = req.params.comId;
   const {userId} = req.body;
   try {
-    const post = await PostModel.findById(postId);
+    const post = await PostModel.findOne({postId:id});
     await post.updateOne({
       $pull: {
         comments: {
