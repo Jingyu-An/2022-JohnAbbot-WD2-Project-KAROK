@@ -39,15 +39,11 @@ export const getAllUsers = async (req, res) => {
 export const updateUser = async (req, res) => {
     const id = req.params.id;
     const {_id} = req.body;
-
-    console.log(" req.body: ", req.body)
-
     if (id === _id) {
       try {
         const user = await UserModel.findByIdAndUpdate(id, req.body, {
           new: true,
         });
-        console.log("Info User : ", user)
         const token = jwt.sign(
           {username: user.username, id: user._id},
           process.env.JWTKEY,

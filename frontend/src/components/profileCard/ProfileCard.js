@@ -11,9 +11,6 @@ const ProfileCard = () => {
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
   const ProfilePage = true;
   const [isProfileClick, setIsProfileClick] = useState(true);
-
-  console.log(user.followers.length)
-  console.log(user.following.length)
   return (
     <div className="ProfileCard">
       <div className="ProfileImages">
