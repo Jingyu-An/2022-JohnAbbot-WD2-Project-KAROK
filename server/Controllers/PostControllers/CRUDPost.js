@@ -1,5 +1,8 @@
 import PostModel from "../../Models/postModel.js";
 import {getALlTimelinePosts} from "./TimelinePost.js";
+import UserModel from "../../Models/userModel.js";
+import mongoose from "mongoose";
+import {compare} from "bcrypt";
 
 // Create
 export const createPost = async (req, res) => {
@@ -12,6 +15,15 @@ export const createPost = async (req, res) => {
     res.status(500).json(err)
   }
 }
+export const getAllPosts = async (res) =>{
+
+    const post = await PostModel.find();
+    console.log('getAllPosts : ' + post)
+    res.status(200).json(post);
+
+}
+
+
 
 // Get
 export const getPost = async (req, res) => {
@@ -46,12 +58,16 @@ export const updatePost = async (req, res) => {
 // Delete
 export const deletePost = async (req, res) => {
   const id = req.params.id;
+  const {isAdmin} = req.body
+
   try {
     const post = await PostModel.findOne({postId: id});
     const userId = post.userId;
     if (post) {
       await post.deleteOne();
-      await getALlTimelinePosts(userId, res)
+      isAdmin ?
+        await getAllPosts(res) :
+        await getALlTimelinePosts(userId, res);
     } else {
       res.status(404).json("Post not founded");
     }

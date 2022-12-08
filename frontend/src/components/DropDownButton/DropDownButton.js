@@ -10,7 +10,7 @@ const DropDownButton = (props) => {
   const deletePostHandler = (event) => {
     event.preventDefault();
     
-    if (user._id === props.data.userId) {
+    if (user._id === props.data.userId || user.isAdmin) {
       props.deletePost(props.data.postId, event);
     }
   }

@@ -5,12 +5,13 @@ import Heart from '../../img/like.png';
 import NotLike from '../../img/notlike.png';
 import Comments from "../Comment/Comments";
 import {useDispatch, useSelector} from "react-redux";
-import {likePost} from "../../API/PostRequest";
+import {getAllPosts, likePost} from "../../API/PostRequest";
 import {deleteCommentsPost, getCommentsPost} from "../../Actions/CommentAction";
 import {UilX} from "@iconscout/react-unicons";
 import DropDownButton from "../DropDownButton/DropDownButton";
 import Button from "react-bootstrap/Button";
 import {updatePost} from "../../Actions/postAction";
+
 
 const Post = ({deletePost, data}) => {
   const dispatch = useDispatch();
@@ -22,7 +23,8 @@ const Post = ({deletePost, data}) => {
   const [comments, setComments] = useState(data.comments)
   const [changingPost, setChangingPost] = useState(false);
   const [updatedPost, setUpdatedPost] = useState('')
-  
+
+
   useEffect(() => {
     dispatch(getCommentsPost(data.postId))
   }, []);
@@ -83,7 +85,7 @@ const Post = ({deletePost, data}) => {
           style={{cursor: "pointer"}}
           onClick={enableCommentHandler}
         />
-        {user._id === data.userId ?
+        {user._id === data.userId || user.isAdmin?
           <DropDownButton
             deletePost={deletePost}
             updatePost={updatePost}
