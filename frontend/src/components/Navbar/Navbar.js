@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../../Actions/AuthActions";
 import './Navbar.css';
 import LogOut from "../Logout/LogOut";
+import KAROK from '../../img/KAROK.png';
 
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 
@@ -20,8 +21,10 @@ function Navigate() {
     
     <Navbar bg="light" expand="lg">
       <Container fluid>
-
-        <Navbar.Brand href="/">Karokify</Navbar.Brand>
+        <Navbar.Brand  className = "brandName" href="/">
+        <img className= "logoNav" src={KAROK} alt =""  />
+        </Navbar.Brand>
+        <Navbar.Brand>    Karokify</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll"/>
         <Navbar.Collapse id="navbarScroll">
           <Nav

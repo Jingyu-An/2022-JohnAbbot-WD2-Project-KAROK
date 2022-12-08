@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "@iconscout/react-unicons": "^1.1.6",
     "@mantine/core": "^4.2.1",
     "@mantine/hooks": "^4.2.1",
@@ -12,6 +13,7 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.3",
     "dotenv": "^16.0.3",
+    "emailjs": "^4.0.1",
     "nodemon": "^2.0.20",
     "react": "^17.0.2",
     "react-bootstrap": "^2.6.0",

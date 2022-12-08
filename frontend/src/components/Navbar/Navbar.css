@@ -12,3 +12,11 @@
     margin-top: 6rem;
     align-self: flex-end;
 }
+.logoNav{
+    border-radius: 10px;
+   margin-left: 15px;
+}
+.brandName{
+    padding-left: 15px;
+    font-size: 40px;
+}
