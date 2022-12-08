@@ -3,30 +3,11 @@ import './InfoCard.css';
 import {UilPen} from '@iconscout/react-unicons';
 import {useState} from 'react';
 import ProfileModal from '../ProfileModal/ProfileModal.js';
-//import LogOut from "../Logout/LogOut";
-import {useParams} from "react-router-dom";
-import * as UserApi from "../../API/UserRequests.js";
 import {useSelector} from "react-redux";
 
 const InfoCard = () => {
   const [modalOpened, setModalOpened] = useState(false);
   const {user} = useSelector((state) => state.authReducer.authData);
-  const params = useParams();
-  const profileUserId = user._id;
-  const [profileUser, setProfileUser] = useState({user});
-
-  useEffect(() => {
-    const fetchProfileUser = async () => {
-      if (profileUserId === user._id) {
-        setProfileUser(user);
-      } else {
-        const profileUser = await UserApi.getUser(profileUserId);
-        setProfileUser(profileUser);
-      }
-    };
-    fetchProfileUser();
-  }, [user]);
-
   return (
     <div className="InfoCard">
       <div className='infoHead'>
@@ -50,13 +31,9 @@ const InfoCard = () => {
       </div>
       <div className='info'>
         <span><b>Works at </b></span>
-        <span>{user.country}</span>
+        <span>{user.worksAt}</span>
       </div>
-     
-
     </div>
   )
 }
-
-
 export default InfoCard;
