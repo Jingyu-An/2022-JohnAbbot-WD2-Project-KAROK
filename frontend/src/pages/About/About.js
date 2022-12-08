@@ -23,11 +23,11 @@ const About = () => {
     <br/>
     
       <Card.Title className='title'><b>Nupur Kesarwani</b><br/>
-      Lead Developer
+      Software Developer
       </Card.Title>
 
-      <Card.Text>
-        John Abbott College Student in Montreal.
+      <Card.Text className='textCard'>
+        John Abbott College Student in Montreal. Right Now we all work on Karokify application.
       </Card.Text>
       <Button variant="info" className="button">Contact</Button>
     </Card.Body>
@@ -39,10 +39,10 @@ const About = () => {
     <Card.Body>
     <img className='rounded image' src={image3} alt="" />
       <Card.Title className='title'><b>Niloofar Keshavarz</b><br/>
-      Lead Developer
+      Software Developer
       </Card.Title>
-      <Card.Text>
-      John Abbott College Student in Montreal.
+      <Card.Text className='textCard'>
+      John Abbott College Student in Montreal. Right Now we all work on Karokify application.
       </Card.Text>
       <Button variant="info" className="button">Contact</Button>
     </Card.Body>
@@ -53,12 +53,12 @@ const About = () => {
     <Card.Body>
     <img className='rounded image' src={image1} alt="" />
       <Card.Title className='title'><b>Jingyu An</b><br/>
-      Lead Developer
+      Software Developer
       </Card.Title>
-      <Card.Text>
-      John Abbott College Student in Montreal.
+      <Card.Text className='textCard'>
+      John Abbott College Student in Montreal. Right Now we all work on Karokify application.
       </Card.Text>
-      <Button variant="info" className="button">Contact</Button>
+      <Button  variant="info" className="button">Contact</Button>
     </Card.Body>
   </Card>
   
@@ -67,10 +67,10 @@ const About = () => {
     <Card.Body>
     <img className='rounded image' src={image3} alt="" />
       <Card.Title className='title'><b>Hyunju Roh</b><br/>
-      Lead Developer
+      Software Developer
       </Card.Title>
-      <Card.Text>
-      John Abbott College Student in Montreal.
+      <Card.Text className='textCard'>
+      John Abbott College Student in Montreal. Right Now we all work on Karokify application.
       </Card.Text>
       <Button variant="info" className="button">Contact</Button>
     </Card.Body>
