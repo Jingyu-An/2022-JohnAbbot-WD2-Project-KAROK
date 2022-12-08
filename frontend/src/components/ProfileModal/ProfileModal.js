@@ -68,7 +68,7 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
       overlayOpacity={0.55}
       overlayBlur={3}
       opened={modalOpened}
-      size="auto"
+      size="42%"
       onClose={() => setModalOpened(false)}
     >
       <form className="infoForm" onSubmit={handleSubmit}>
@@ -94,16 +94,7 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
           />
         </div>
 
-        <div>
-          <input
-            value={formData.worksAt}
-            onChange={handleChange}
-            type="text"
-            className="infoInput"
-            name="worksAt"
-            placeholder="Works at"
-          />
-        </div>
+
 
         <div>
           <input
@@ -135,13 +126,24 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
             className="infoInput"
             placeholder="RelationShip Status"
           />
+            <input
+              value={formData.worksAt}
+              onChange={handleChange}
+              type="text"
+              className="infoInput"
+              name="worksAt"
+              placeholder="Works at"
+            />
         </div>
 
 
         <div>
-          Profile Image
+          <label style={{marginRight:"5rem", marginLeft:"3rem"}}>Profile Image</label>
           <input type="file" name="profileImage" onChange={onImageChange} />
-          Cover image
+          </div>
+
+          <div>
+            <label style={{marginRight:"5rem", marginLeft:"3rem"}}>Cover image</label>
           <input type="file" name="coverImage" onChange={onImageChange} />
         </div>
 
