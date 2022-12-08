@@ -4,7 +4,7 @@ import PostModel from "../../Models/postModel.js";
 export const getCommentPost = async (req, res) => {
   const id = req.params.id;
   try {
-    const post = await PostModel.findById(id);
+    const post = await PostModel.findOne({postId:id});
     if (post) {
       const comments = post.comments;
       res.status(200).json(comments);
@@ -46,10 +46,6 @@ export const deleteCommentPost = async (req, res) => {
   const postId = req.params.id;
   const comId = req.params.comId;
   const {userId} = req.body;
-  console.log('delete comment post')
-  console.log(postId)
-  console.log(comId)
-  console.log(userId)
   try {
     const post = await PostModel.findById(postId);
     await post.updateOne({

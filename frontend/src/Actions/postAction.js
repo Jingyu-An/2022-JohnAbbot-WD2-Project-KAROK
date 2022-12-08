@@ -25,13 +25,12 @@ export const updatePost = (id, data) => async (dispatch) => {
 }
 
 export const deletePost = (id) => async (dispatch) => {
-  dispatch({type: "DELETE_COMMENT_START"})
-  
+  dispatch({type: "DELETE_START"})
   try {
     const { data } = await PostApi.deletePost(id);
-    dispatch({ type: "DELETE_COMMENT_SUCCESS", data: data })
+    dispatch({ type: "DELETE_SUCCESS", data: data })
   } catch (e) {
     console.log(e);
-    dispatch({type: "DELETE_COMMENT_FAIL"})
+    dispatch({type: "DELETE_FAIL"})
   }
 }

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './Post.css';
 import Comment from '../../img/comment.png';
-//import Share from '../../img/share.png';
 import Heart from '../../img/like.png';
 import NotLike from '../../img/notlike.png';
 import Comments from "../Comment/Comments";
@@ -11,18 +10,18 @@ import {deleteCommentsPost, getCommentsPost} from "../../Actions/CommentAction";
 import {UilX} from "@iconscout/react-unicons";
 import DropDownButton from "../DropDownButton/DropDownButton";
 
-const Post = ({data}) => {
+const Post = ({deletePost, data}) => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.authReducer.authData);
   
-  useEffect(() => {
-    dispatch(getCommentsPost(data._id))
-  }, []);
-  
-  const [liked, setLiked] = useState(data.likes.includes(user.id));
+  const [liked, setLiked] = useState(data.likes.includes(user._id));
   const [likes, setLikes] = useState(data.likes.length);
   
   const [comments, setComments] = useState(data.comments)
+  
+  useEffect(() => {
+    dispatch(getCommentsPost(data.postId))
+  }, []);
   
   const likeHandler = () => {
     setLiked((prev) => !prev);
@@ -42,8 +41,8 @@ const Post = ({data}) => {
   }
   
   const deleteCommentHandler = (commentId, e) => {
-    
     e.preventDefault();
+    
     dispatch(deleteCommentsPost(data._id, commentId, user._id));
     setComments(comments.filter(comment => comment.commentId !== commentId));
   };
@@ -69,7 +68,7 @@ const Post = ({data}) => {
           onClick={enableCommentHandler}
         />
         { user._id === data.userId ?
-          <DropDownButton user={user} data={data}/> : ''
+          <DropDownButton deletePost={deletePost} data={data}/> : ''
         }
       </div>
       <span style={{color: "var(--gray)", fontSize: '12px'}}>{likes}likes</span>
@@ -102,8 +101,7 @@ const Post = ({data}) => {
           : ''}
       </div>
     </div>
-  )
-    ;
+  );
 }
 
 export default Post;
