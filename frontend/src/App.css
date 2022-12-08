@@ -9,9 +9,8 @@
     --buttonBg: linear-gradient(98.63deg, #05454d 0%, #63d8ea 100%);
     --inputColor: rgba(55, 70, 83, 0.07);
     --photo: #4ec4ba;
-    --video: #49abbd;
-    --location: #258998;
-    --schedule: #176e6d;
+   
+   
   }
   .App{
     overflow: hidden;
