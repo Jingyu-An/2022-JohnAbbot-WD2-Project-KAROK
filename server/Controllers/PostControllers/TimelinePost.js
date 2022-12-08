@@ -5,8 +5,6 @@ import mongoose from "mongoose";
 // Get Timeline Post
 export const getTimelinePosts = async (req, res) => {
   const userId = req.params.id;
-  
-  console.log('timeline : ' + userId);
   await getALlTimelinePosts(userId, res);
 }
 

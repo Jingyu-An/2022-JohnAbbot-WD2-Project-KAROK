@@ -1,5 +1,5 @@
 import express from "express";
-import {createPost, deletePost, getPost, updatePost} from "../Controllers/PostControllers/CRUDPost.js";
+import {createPost, deletePost, getPost, updatePost,getAllPosts} from "../Controllers/PostControllers/CRUDPost.js";
 import {likePost} from "../Controllers/PostControllers/LikePost.js";
 import {getTimelinePosts} from "../Controllers/PostControllers/TimelinePost.js";
 import {addCommentPost, deleteCommentPost, getCommentPost} from "../Controllers/PostControllers/CommentsPost.js";
@@ -9,8 +9,9 @@ const router = express.Router();
 // CRUD Post
 router.post('/', createPost);
 router.get('/:id', getPost);
+router.get('/', getAllPosts);
 router.put('/:id', updatePost);
-router.delete('/:id', deletePost);
+router.put('/:id/delete', deletePost);
 
 // Like/Unlike
 router.put('/:id/like', likePost);
