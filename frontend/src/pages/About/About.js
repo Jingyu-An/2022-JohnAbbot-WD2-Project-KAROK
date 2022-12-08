@@ -20,7 +20,7 @@ const About = () => {
     
     <Card.Body className ="cardBody">
     <img className='rounded image' src={image3} alt="" />
-    <br/>
+    
     
       <Card.Title className='title'><b>Nupur Kesarwani</b><br/>
       Software Developer
