@@ -3,7 +3,7 @@ import './InfoCard.css';
 import {UilPen} from '@iconscout/react-unicons';
 import {useState} from 'react';
 import ProfileModal from '../ProfileModal/ProfileModal.js';
-import LogOut from "../Logout/LogOut";
+//import LogOut from "../Logout/LogOut";
 import {useParams} from "react-router-dom";
 import * as UserApi from "../../API/UserRequests.js";
 import {useSelector} from "react-redux";
@@ -52,7 +52,7 @@ const InfoCard = () => {
         <span><b>Works at </b></span>
         <span>{user.country}</span>
       </div>
-      <LogOut/>
+     
 
     </div>
   )
