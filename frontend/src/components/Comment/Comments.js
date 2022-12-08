@@ -12,9 +12,15 @@ const Comments = (props) => {
   
   const data = props.data;
   const comment = useRef();
+  const [focus, setFocus] = useState(false);
   
   const summitHandler = (event) => {
     event.preventDefault();
+    
+    if (!comment.current.value) {
+      comment.current.focus();
+      return;
+    }
     
     const newComment = {
       username: user.username,
@@ -33,10 +39,15 @@ const Comments = (props) => {
   
   return (
     <div className="Comments">
-      <div className="Comment">
+      <div
+        className="Comment"
+        style={focus ? {border: '2px solid', borderColor: 'red'} : {}}
+      >
         <input
           type="text"
           placeholder='Comments...'
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
           ref={comment}
         />
         <div className="s-icon">

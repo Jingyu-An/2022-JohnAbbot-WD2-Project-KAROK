@@ -1,16 +1,12 @@
 import React, { useState, useRef } from "react";
 import ProfileImage from "../../img/profileImg.jpeg";
 import "./PostShare.css";
-import { UilScenery } from "@iconscout/react-unicons";
-import { UilPlayCircle } from "@iconscout/react-unicons";
-import { UilLocationPoint } from "@iconscout/react-unicons";
-import { UilSchedule } from "@iconscout/react-unicons";
+import {UilEnter, UilFileUpload, UilScenery} from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 
 // images uploading
 import {useDispatch, useSelector} from "react-redux";
 import {uploadImage, uploadPost} from "../../Actions/uploadAction";
-
 
 const PostShare = (props) => {
   const [image, setImage] = useState(null);
@@ -19,6 +15,7 @@ const PostShare = (props) => {
   // images uploading
   const {user} = useSelector((state) => state.authReducer.authData)
   const desc = useRef();
+  const [focus, setFocus] = useState(false);
   const dispatch = useDispatch();
   const uploading = useSelector((state)=>state.postReducer.uploading)
 
@@ -27,10 +24,16 @@ const PostShare = (props) => {
       let img = event.target.files[0];
       setImage(img);
     }
+    
   };
   
   const submitHandler = (event) => {
     event.preventDefault();
+    
+    if (!image && !desc.current.value) {
+      desc.current.focus();
+      return;
+    }
     
     const newPost = {
       userId: user._id,
@@ -72,36 +75,27 @@ const PostShare = (props) => {
       <img src={ProfileImage} alt="" />
       <div>
         <input
-          type="text"
           placeholder="What's happening"
+          style={focus ? {border: '2px solid', borderColor: 'red'} : {}}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
           ref={desc}
         />
-        <div className="postOptions">
+        <span className="postOptions">
           <div className="option" style={{ color: "var(--photo)" }}
           onClick={()=>imageRef.current.click()}
           >
             <UilScenery />
-            Photo
           </div>
-          <div className="option" style={{ color: "var(--video)" }}>
-            <UilPlayCircle />
-            Video
-          </div>{" "}
-          <div className="option" style={{ color: "var(--location)" }}>
-            <UilLocationPoint />
-            Location
-          </div>{" "}
-          <div className="option" style={{ color: "var(--schedule)" }}>
-            <UilSchedule />
-            Schedule
-          </div>
-          <button
-            className="button ps-button"
+          <div
+            className="option"
             onClick={submitHandler}
-            disabled={uploading}
-          >
-            {uploading ? "Uploading..." : "Post"}
-          </button>
+            style={{ color: "var(--schedule)"}
+          }>
+            {uploading ? <UilFileUpload/> : <UilEnter />}
+            
+          </div>
+          
           <div style={{ display: "none" }}>
             <input
               type="file"
@@ -110,7 +104,7 @@ const PostShare = (props) => {
               onChange={onImageChange}
             />
           </div>
-        </div>
+        </span>
       {image && (
 
         <div className="previewImage">
