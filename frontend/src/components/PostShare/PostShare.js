@@ -1,12 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, {useState, useRef, Fragment} from "react";
 import ProfileImage from "../../img/profileImg.jpeg";
 import "./PostShare.css";
 import {UilEnter, UilFileUpload, UilScenery} from "@iconscout/react-unicons";
-import { UilTimes } from "@iconscout/react-unicons";
+import {UilTimes} from "@iconscout/react-unicons";
 
 // images uploading
 import {useDispatch, useSelector} from "react-redux";
 import {uploadImage, uploadPost} from "../../Actions/uploadAction";
+import {Textarea} from "@mantine/core";
 
 const PostShare = (props) => {
   const [image, setImage] = useState(null);
@@ -18,8 +19,8 @@ const PostShare = (props) => {
   const desc = useRef();
   const [focus, setFocus] = useState(false);
   const dispatch = useDispatch();
-  const uploading = useSelector((state)=>state.postReducer.uploading)
-
+  const uploading = useSelector((state) => state.postReducer.uploading)
+  
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
@@ -37,14 +38,14 @@ const PostShare = (props) => {
     }
     
     const newPost = {
-      userId: user._id,
-      desc: desc.current.value,
-      likes:[],
-      comments:[],
-      images:'',
-      postId: Math.random().toString(16).slice(2),
+      userId  : user._id,
+      desc    : desc.current.value,
+      likes   : [],
+      comments: [],
+      images  : '',
+      postId  : Math.random().toString(16).slice(2),
     }
-  
+    
     if (image) {
       const data = new FormData();
       const filename = Date.now() + image.name;
@@ -73,38 +74,35 @@ const PostShare = (props) => {
   
   return (
     <div className="PostShare">
-      <img
-        src={
-          user.profilePicture
-            ? serverPublic + user.profilePicture
-            : ProfileImage
-        }
-        alt="ProfileImage"
-      />
       <div>
+        <img
+          src={
+            user.profilePicture
+              ? serverPublic + user.profilePicture
+              : ProfileImage
+          }
+          alt="ProfileImage"
+        />
         <input
+          type='text'
           placeholder="What's happening"
           style={focus ? {border: '2px solid', borderColor: 'red'} : {}}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           ref={desc}
         />
-        <span className="postOptions">
-          <div className="option" style={{ color: "var(--photo)" }}
-          onClick={()=>imageRef.current.click()}
-          >
-            <UilScenery />
+        <div className="postOptions">
+          <div style={{color: "var(--photo)"}}
+               onClick={() => imageRef.current.click()}>
+            <UilScenery/>
           </div>
           <div
-            className="option"
             onClick={submitHandler}
-            style={{ color: "var(--schedule)"}
-          }>
-            {uploading ? <UilFileUpload/> : <UilEnter />}
-            
+            style={{color: "var(--schedule)"}
+            }>
+            {uploading ? <UilFileUpload/> : <UilEnter/>}
           </div>
-          
-          <div style={{ display: "none" }}>
+          <div style={{display: "none"}}>
             <input
               type="file"
               name="myImage"
@@ -112,14 +110,15 @@ const PostShare = (props) => {
               onChange={onImageChange}
             />
           </div>
-        </span>
-      {image && (
-
-        <div className="previewImage">
-          <UilTimes onClick={()=>setImage(null)}/>
-          <img src={URL.createObjectURL(image)} alt="" />
         </div>
-      )}
+      </div>
+      <div>
+        {image && (
+          <div className="previewImage">
+            <UilTimes onClick={() => setImage(null)}/>
+            <img src={URL.createObjectURL(image)} alt=""/>
+          </div>
+        )}
       </div>
     </div>
   );
