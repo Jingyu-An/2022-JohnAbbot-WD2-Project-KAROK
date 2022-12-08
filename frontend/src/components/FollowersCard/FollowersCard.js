@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import './FollowersCard.css'
 import KAROK from '../../img/KAROK.png';
 import {UilSearch} from '@iconscout/react-unicons'; // icon library
-import {Followers} from '../../Data/FollowersData';
 import {useSelector} from "react-redux";
 import {getAllUser} from "../../API/UserRequests";
 import User from "../User/User";
@@ -46,11 +45,6 @@ const FollowersCard = () => {
         if(person.username.includes(search) && person._id !== user._id )
           return <User person={person} key={id} />;
       })}
-      {/*{!location ? (*/}
-      {/*  <span onClick={() => setModalOpened(true)}>Show more</span>*/}
-      {/*) : (*/}
-      {/*  ""*/}
-      {/*)}*/}
     </div>
   )
 }
