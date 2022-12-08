@@ -24,7 +24,12 @@ const Posts = (props) => {
     <div className="Posts">
       {loading ? "Fetching posts..." :
         props.currentPost.map((post, id) => {
-          return <Post deletePost={deletePostHandler} key={id} data={post} id={id}/>
+          return <Post
+            deletePost={deletePostHandler}
+            key={id}
+            data={post}
+            id={id}
+          />
         })}
     </div>
   )

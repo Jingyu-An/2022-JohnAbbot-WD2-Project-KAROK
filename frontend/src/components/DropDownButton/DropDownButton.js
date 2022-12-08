@@ -15,6 +15,11 @@ const DropDownButton = (props) => {
     }
   }
   
+  const updatePostHandler = (event) => {
+    event.preventDefault();
+    props.changingComment();
+  }
+  
   return (
     <Dropdown style={{margin: '0 0 0 auto'}}>
       <Dropdown.Toggle className='dropdown-btn' id="dropdown-basic">
@@ -22,7 +27,7 @@ const DropDownButton = (props) => {
       </Dropdown.Toggle>
     
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Update</Dropdown.Item>
+        <Dropdown.Item onClick={updatePostHandler}>Update</Dropdown.Item>
         <Dropdown.Item onClick={deletePostHandler}>Delete</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

@@ -6,6 +6,12 @@ import mongoose from "mongoose";
 export const getTimelinePosts = async (req, res) => {
   const userId = req.params.id;
   
+  console.log('timeline : ' + userId);
+  await getALlTimelinePosts(userId, res);
+}
+
+export const getALlTimelinePosts = async (userId, res) => {
+  
   try {
     const currentUserPosts = await PostModel.find({userId: userId});
     const followingPosts = await UserModel.aggregate([
@@ -36,4 +42,4 @@ export const getTimelinePosts = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};

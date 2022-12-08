@@ -9,6 +9,8 @@ import {likePost} from "../../API/PostRequest";
 import {deleteCommentsPost, getCommentsPost} from "../../Actions/CommentAction";
 import {UilX} from "@iconscout/react-unicons";
 import DropDownButton from "../DropDownButton/DropDownButton";
+import Button from "react-bootstrap/Button";
+import {updatePost} from "../../Actions/postAction";
 
 const Post = ({deletePost, data}) => {
   const dispatch = useDispatch();
@@ -18,6 +20,8 @@ const Post = ({deletePost, data}) => {
   const [likes, setLikes] = useState(data.likes.length);
   
   const [comments, setComments] = useState(data.comments)
+  const [changingPost, setChangingPost] = useState(false);
+  const [updatedPost, setUpdatedPost] = useState('')
   
   useEffect(() => {
     dispatch(getCommentsPost(data.postId))
@@ -47,6 +51,18 @@ const Post = ({deletePost, data}) => {
     setComments(comments.filter(comment => comment.commentId !== commentId));
   };
   
+  const changingPostHandler = () => {
+    setChangingPost((prev) => !prev);
+  }
+  
+  const updatePostHandler = () => {
+    const updateData = {
+      ...data,
+      desc: updatedPost,
+    }
+    dispatch(updatePost(data.postId, updateData))
+  }
+  
   return (
     <div className='Post'>
       <img
@@ -67,18 +83,31 @@ const Post = ({deletePost, data}) => {
           style={{cursor: "pointer"}}
           onClick={enableCommentHandler}
         />
-        { user._id === data.userId ?
-          <DropDownButton deletePost={deletePost} data={data}/> : ''
+        {user._id === data.userId ?
+          <DropDownButton
+            deletePost={deletePost}
+            updatePost={updatePost}
+            changingComment={changingPostHandler}
+            data={data}
+          /> : ''
         }
       </div>
       <span style={{color: "var(--gray)", fontSize: '12px'}}>{likes}likes</span>
       <div className='detail'>
-        <span><b>{data.name}</b></span>
-        <span> {data.desc}</span>
+        {changingPost ?
+          <form style={{textAlign:'right'}}>
+            <textarea style={{width: '100%'}} defaultValue={data.desc} onChange={e => {
+              e.preventDefault();
+              setUpdatedPost(e.target.value);
+            }}/>
+            <Button onClick={updatePostHandler} className='btn'>Update</Button>
+          </form>
+          : <span> {data.desc}</span>
+        }
       </div>
       {comments.map((comment, id) => {
         return <div key={id} className='Comment'>
-          <div style={{flex: 1, fontStyle:'italic', fontWeight: 'bold'}}>{comment.username}</div>
+          <div style={{flex: 1, fontStyle: 'italic', fontWeight: 'bold'}}>{comment.username}</div>
           <div style={{flex: 5}}>{comment.comment}</div>
           {user._id === comment.userId ?
             <div

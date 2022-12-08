@@ -10,10 +10,18 @@ const PostSide = () => {
   
   // matching posts from db
   let postsLength = 0;
-  posts.map((post) => postsLength += post.comments.length);
-  currentPost.map((post) => postsLength -= post.comments.length);
+  let currentPostDesc = '';
+  let prevPostDesc = '';
+  posts.map((post) => {
+    postsLength += post.comments.length;
+    currentPostDesc += post.desc;
+  });
+  currentPost.map((post) => {
+    postsLength -= post.comments.length;
+    prevPostDesc += post.desc;
+  });
   
-  if (postsLength) {
+  if (postsLength || currentPostDesc !== prevPostDesc) {
     setCurrentPost(posts);
   }
   

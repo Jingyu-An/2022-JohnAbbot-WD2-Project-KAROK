@@ -56,3 +56,10 @@
 .s-icon:hover{
     cursor: pointer;
 }
+
+.btn{
+    background: var(--buttonBg);
+    float: right;
+    border: none;
+    outline: none;
+}
