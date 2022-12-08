@@ -12,7 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {uploadImage, uploadPost} from "../../Actions/uploadAction";
 
 
-const PostShare = () => {
+const PostShare = (props) => {
   const [image, setImage] = useState(null);
   const imageRef = useRef();
   
@@ -35,6 +35,10 @@ const PostShare = () => {
     const newPost = {
       userId: user._id,
       desc: desc.current.value,
+      likes:[],
+      comments:[],
+      images:'',
+      postId: Math.random().toString(16).slice(2),
     }
   
     if (image) {
@@ -54,6 +58,7 @@ const PostShare = () => {
       
     }
     dispatch(uploadPost(newPost));
+    props.setCurrentPost([...props.currentPost, newPost]);
     reset();
   }
   
@@ -112,10 +117,7 @@ const PostShare = () => {
           <UilTimes onClick={()=>setImage(null)}/>
           <img src={URL.createObjectURL(image)} alt="" />
         </div>
-
       )}
-
-
       </div>
     </div>
   );

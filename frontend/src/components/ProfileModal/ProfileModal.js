@@ -113,6 +113,7 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
             className="infoInput"
             name="livesIn"
             placeholder="LIves in"
+
           />
 
           <input

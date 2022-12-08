@@ -14,6 +14,7 @@ const postSchema = mongoose.Schema({
       commentId: String
     }],
     image : String,
+    postId : String,
   },
   {
     timestamps: true,
