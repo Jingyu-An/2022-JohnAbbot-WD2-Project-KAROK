@@ -10,9 +10,11 @@
 .about{
     display:flex;
     flex-direction: row;
-    padding-left: 3rem;
+    padding-left: 13rem;
     margin-top: 5rem;
     gap:2rem;
+   
+    
 }
 
 .image{
