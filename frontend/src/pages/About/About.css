@@ -8,6 +8,11 @@
 }  
 .button{
    margin-right: 4rem;
+   background-color: var(--buttonBg);
+   color:aliceblue;
+   font-size: 12px;
+
+  
 }
 
 .about{
@@ -16,6 +21,7 @@
     padding-left: 13rem;
     margin-top: 5rem;
     gap:2rem;
+   
    
     
 }
@@ -37,6 +43,7 @@
     position: relative;
 }
 .pageTitle{
+    margin-bottom: -2rem;
     text-align: center;
     font-size: 25px; 
     font-family:Arial, Helvetica, sans-serif;
@@ -47,3 +54,24 @@
     text-align: justify;
     
 }
+
+.Webname > h1 {
+    font-size: 3rem;
+    background-color: red;
+  
+    /* Create the gradient. */
+    background-image: var(--buttonBg);
+    
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+  
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. 
+    https://css-tricks.com/almanac/properties/b/background-clip/*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
