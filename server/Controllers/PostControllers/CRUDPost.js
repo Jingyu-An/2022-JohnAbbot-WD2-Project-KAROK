@@ -16,13 +16,11 @@ export const createPost = async (req, res) => {
   }
 }
 export const getAllPosts = async (res) =>{
-  try{
+
     const post = await PostModel.find();
     console.log('getAllPosts : ' + post)
     res.status(200).json(post);
-  }catch (e){
-    res.status(500).json(e)
-  }
+
 }
 
 
