@@ -14,7 +14,7 @@ const About = () => {
     <div><h1 className='pageTitle'>OUR AMAZING TEAM</h1></div>
     
     </div>
-    <div className='about'>
+  <div className='about'>
        
     <Card  style={{ width: '15rem' }}>
     
@@ -32,6 +32,8 @@ const About = () => {
       <Button variant="info" className="button">Contact</Button>
     </Card.Body>
   </Card>
+
+
   <Card style={{ width: '15rem' }}>
     
     <Card.Body>
@@ -45,6 +47,7 @@ const About = () => {
       <Button variant="info" className="button">Contact</Button>
     </Card.Body>
   </Card>
+
   <Card style={{ width: '15rem' }}>
    
     <Card.Body>
@@ -58,6 +61,7 @@ const About = () => {
       <Button variant="info" className="button">Contact</Button>
     </Card.Body>
   </Card>
+  
   <Card style={{ width: '15rem' }}>
     
     <Card.Body>
