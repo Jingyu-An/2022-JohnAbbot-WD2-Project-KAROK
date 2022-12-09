@@ -74,4 +74,8 @@
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
 }
+.roundedImage{
+    border-radius: 50%;
+    margin-left: 40px;
+}
 
