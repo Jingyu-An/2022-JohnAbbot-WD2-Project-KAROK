@@ -20,7 +20,7 @@ const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(initialState);
   const [data, setData] = useState(initialState);
   const [confirmPassword, setConfirmPassword] = useState(true);
-
+  const [limitPassword, setLimitPassword] = useState(true);
   const resetForm = () => {
     setData(initialState);
     setConfirmPassword(confirmPassword)
@@ -31,14 +31,19 @@ const Auth = () => {
   }
 
 
-
   const handleSubmit = (e) => {
     setConfirmPassword(true);
+    setLimitPassword(true);
     e.preventDefault();
     if (isSignUp) {
-      data.password === data.confirmPassword
-        ? dispatch(signUp(data, navigate))
-        : setConfirmPassword(false);
+      if (data.password.length < 8) {
+        setLimitPassword(false);
+      } else if (data.password !== data.confirmPassword) {
+        setConfirmPassword(false);
+      } else {
+        dispatch(signUp(data, navigate))
+      }
+
     } else {
       dispatch(logIn(data, navigate));
     }
@@ -111,6 +116,16 @@ const Auth = () => {
             }}>
             *Confirm Password does not match!
           </span>
+          <span
+            style={{
+              color: "red",
+              fontSize: "12px",
+              alignSelf: "fixed-end",
+              margin: "5px",
+              display: limitPassword ? "none" : "block",
+            }}>
+            *Password must be more than 8 characters!
+          </span>
 
           <div>
             <span
@@ -130,7 +145,7 @@ const Auth = () => {
               }
               </span>
 
-           <button className="button infoButton" type = "Submit" >      {isSignUp ? "SignUp" : "Login"}     </button>
+            <button className="button infoButton" type="Submit">      {isSignUp ? "SignUp" : "Login"}     </button>
 
           </div>
         </form>
