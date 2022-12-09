@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 import image1 from "../../img/img1.png";
 import image2 from "../../img/Niloo.png";
 import image3 from "../../img/img3.png";
-
+import lucieImage from "../../img/lucie.png"
 
 const About = () => {
   return (
@@ -85,7 +85,8 @@ const About = () => {
 
         <Card style={{ width: "15rem" }}>
           <Card.Body>
-            <img className="roundedImage" src={image3} alt="" />
+            <img className='roundedImage' src={lucieImage} alt="" />
+
             <Card.Title className="title">
               <b>Hyunju Roh</b>
               <br />

@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import './Auth.css';
 import KAROK from '../../img/KAROK.png';
 import {useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {logIn, logout, signUp} from "../../Actions/AuthActions";
+import {useDispatch}  from "react-redux";
+import {logIn, signUp} from "../../Actions/AuthActions";
 
 
 const Auth = () => {
@@ -14,7 +14,7 @@ const Auth = () => {
     password: "",
     confirmPassword: "",
   };
-  const loading = useSelector((state) => state.authReducer.loading);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isSignUp, setIsSignUp] = useState(initialState);
