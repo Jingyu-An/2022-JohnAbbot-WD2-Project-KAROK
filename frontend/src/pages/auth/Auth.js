@@ -20,10 +20,11 @@ const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(initialState);
   const [data, setData] = useState(initialState);
   const [confirmPassword, setConfirmPassword] = useState(true);
-  const [limitPassword, setLimitPassword] = useState(true);
+  const [limitPassword, setLimitPassword] = useState(false);
   const resetForm = () => {
     setData(initialState);
     setConfirmPassword(confirmPassword)
+    setLimitPassword(limitPassword)
   }
 
   const handleChange = (e) => {
@@ -33,11 +34,11 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     setConfirmPassword(true);
-    setLimitPassword(true);
+    setLimitPassword(false);
     e.preventDefault();
     if (isSignUp) {
       if (data.password.length < 8) {
-        setLimitPassword(false);
+        setLimitPassword(true);
       } else if (data.password !== data.confirmPassword) {
         setConfirmPassword(false);
       } else {
@@ -116,16 +117,18 @@ const Auth = () => {
             }}>
             *Confirm Password does not match!
           </span>
-          <span
+
+          {isSignUp && (<span
             style={{
               color: "red",
               fontSize: "12px",
               alignSelf: "fixed-end",
               margin: "5px",
-              display: limitPassword ? "none" : "block",
+              display: !limitPassword ? "none" : "block",
             }}>
             *Password must be more than 8 characters!
-          </span>
+            </span>)}
+
 
           <div>
             <span
